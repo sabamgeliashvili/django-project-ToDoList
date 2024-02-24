@@ -1,0 +1,73 @@
+{% extends "my_app/base.html" %}
+
+{% block title %}
+Login Here
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<head>
+    <style>
+        /* Add this to your CSS file or style tag */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    </style>
+</head>
+
+<div class="login-container">
+    <form method="post" class="login-form" action="">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+        </div>
+        
+        <p class="register-link">Don't have an account? Create one <a href="/register">here</a></p>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
+
+</div>
+{% endblock %}

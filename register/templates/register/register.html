@@ -1,0 +1,52 @@
+{% extends "my_app/base.html" %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        /* Add this to your CSS file or style tag */
+.custom-form {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto;  /* Center the form horizontally */
+}
+
+.form-group {
+    margin-bottom: 15px;  /* Add spacing between form groups */
+}
+
+label {
+    display: block; /* Ensure labels are displayed as blocks */
+    margin-bottom: 5px; /* Add spacing between labels and form elements */
+}
+
+/* Add more custom styles as needed */
+
+    </style>
+</head>
+    <form method="POST" class="custom-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Repeat Password:</label>
+            {{ form.password2 }}
+        </div>
+        
+        <button type="submit" class="btn btn-success">REGISTER</button>
+    </form>
+{% endblock %}
